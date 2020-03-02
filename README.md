@@ -1,5 +1,7 @@
 # Instructions
 
+Please read through the instructions carefully.
+
 ## Requirements
 - Please ensure that you have these or later version of `node` and `npm`.
     - `node` >= `12.11.0`

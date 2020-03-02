@@ -7,7 +7,7 @@ function input(question) {
   });
   return new Promise((res, rej) => {
     IReadline.question(question, answer => {
-      IReadline.close();
+      setImmediate(() => IReadline.close());
       res(answer.trim());
     });
   });

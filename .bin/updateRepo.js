@@ -79,7 +79,7 @@ async function updateRepo() {
     try {
       const currentBranch = await getCurrentBranch();
 
-      const numberOfUpstreamCommits = getNumberOfUpstreamCommits();
+      const numberOfUpstreamCommits = await getNumberOfUpstreamCommits();
 
       if (numberOfUpstreamCommits > 0) {
         const checkoutMaster = 'git checkout master';
@@ -87,7 +87,7 @@ async function updateRepo() {
         await cmdGet(checkoutMaster);
 
         const mergeToMaster = `git merge ${upstreamRemoteName}/master`;
-        info(`Mergin upstream to master: ${mergeToMaster}`);
+        info(`Merging upstream to master: ${mergeToMaster}`);
         await cmdGet(mergeToMaster);
 
         if (currentBranch !== 'master') {
