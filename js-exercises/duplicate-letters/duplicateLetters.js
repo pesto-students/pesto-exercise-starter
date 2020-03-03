@@ -1,15 +1,27 @@
 function duplicateLetters(...args) {
   const str = args[0];
-  let count = 0;
+  let count = [];
 
   str.split("").forEach((item, index, array) => {
-    if (array.lastIndexOf(item) !== index) {
-      count++;
-    }
+    let ans = 0;
+    array.forEach((element, elIndex) => {
+      if (item === element) {
+        ans++;
+      }
+    });
+    count.push({ item: item, count: ans });
   });
 
-  const result = count ? console.log("found ", count) : false;
-  return result;
+  let result = 0;
+  count.forEach(item => {
+    if (item.count >= result) {
+      result = item.count;
+    }
+  });
+  if (result > 1) {
+    return result;
+  }
+  return false;
 }
 
 export { duplicateLetters };
