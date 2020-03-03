@@ -1,6 +1,6 @@
-function sumAll() {
-  let [min, max] = arguments[0]
-  let sum = 0;
+function sumAll(arr) {
+  let [min, max] = arr
+  let sum = 0
 
   if (min > max) {
     // swap
@@ -12,13 +12,11 @@ function sumAll() {
   sum = 0
 
   for (let i = min; i <= max; i++) {
-    sum += i;
+    sum += i
   }
 
   return sum;
 }
-
-sumAll([1,4])
 
 export {
   sumAll,
