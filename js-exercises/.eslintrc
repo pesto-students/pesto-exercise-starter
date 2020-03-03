@@ -6,6 +6,7 @@
   "rules": {
     "no-restricted-syntax": 0,
     "arrow-parens": 0,
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "linebreak-style": [2, "windows"]
   }
 }
