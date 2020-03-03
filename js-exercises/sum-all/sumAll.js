@@ -4,9 +4,8 @@ function sumAll(arr) {
   let start = firstNum < lastNum ? firstNum : lastNum;
   const end = firstNum < lastNum ? lastNum : firstNum;
   let sum = 0;
-  for (start; start <= end;) {
+  for (start; start <= end; start += 1) {
     sum += start;
-    start += 1;
   }
   return sum;
 }
