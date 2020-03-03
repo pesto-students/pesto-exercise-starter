@@ -1,7 +1,7 @@
 module.exports = {
   verbose: true,
   transform: {
-    '^.+\\.(js|ts)$': 'babel-jest',
+    "^.+\\.(js|ts)$": "babel-jest"
   },
-  testEnvironment: 'node',
+  testEnvironment: "node"
 };
