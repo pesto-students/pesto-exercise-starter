@@ -22,3 +22,5 @@ function sumPrimes(num) {
 
   return sum;
 }
+
+export { sumPrimes };
