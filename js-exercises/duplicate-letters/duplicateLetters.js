@@ -1,5 +1,6 @@
 function duplicateLetters(...args) {
-  let str = args[0], map = new Map();
+  let str = args[0];
+  let map = new Map();
 
   for (let i = 0; i < str.length; i++) {
     let char = str.charAt(i);
