@@ -1,4 +1,4 @@
-function maxChar(str) {
+function duplicateLetters(str) {
   const charMap = {};
   let max = 0;
   for (let char of str) {
@@ -19,3 +19,5 @@ function maxChar(str) {
   }
   return max;
 }
+
+export { duplicateLetters };

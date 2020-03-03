@@ -11,3 +11,5 @@ function sumFibs(num) {
   }
   return result;
 }
+
+export { sumFibs };
