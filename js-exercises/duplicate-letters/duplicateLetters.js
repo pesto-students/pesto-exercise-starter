@@ -1,24 +1,23 @@
 
-function duplicateLetters(...args) {
-  let lettersCount = {};
-  for (let letter of args[0]) {
+function duplicateLetters(string) {
+  let max = 1
+  let lettersCount = {}
+
+  for (let letter of string) {
     if (letter in lettersCount) {
-      lettersCount[letter]++;
+      lettersCount[letter]++
     } else {
-      lettersCount[letter] = 1;
+      lettersCount[letter] = 1
     }
   }
-  let max = 1;
+
   for (let val in lettersCount) {
     if (lettersCount[val] > max) {
-      max = lettersCount[val];
+      max = lettersCount[val]
     }
   }
-  if (max === 1) {
-    return false;
-  } else {
-    return max;
-  }
+
+  return max === 1 ? false : max
 }
 
 export {
