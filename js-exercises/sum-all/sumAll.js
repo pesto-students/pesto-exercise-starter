@@ -1,8 +1,7 @@
-function sumAll() {
-  function sumAll([start,end]) {
-    return Array.from({length:max-min},(v,k)=>k+1).reduce((a,b)=>a+b)
-  }
+function sumAll([min, max]) {
+  return Array.from({ length: max - min + 1 }, (v, k) => k + 1).reduce(
+    (a, b) => a + b
+  );
+}
 
-export {
-  sumAll,
-};
+export { sumAll };
