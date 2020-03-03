@@ -8,13 +8,15 @@
   },
   "scripts": {
     "fetch": "node .bin/fetchExercise.js",
-    "update-repo": "node .bin/updateRepo.js"
+    "update-repo": "node .bin/updateRepo.js",
+    "test": "jest"
   },
   "dependencies": {
     "@octokit/rest": "^17.0.0",
     "argparse": "^1.0.10",
     "chalk": "^3.0.0",
     "dotenv": "^8.2.0",
+    "jest": "^25.1.0",
     "lodash": "^4.17.15",
     "mkdirp": "^1.0.3",
     "node-cmd": "^3.0.0",
