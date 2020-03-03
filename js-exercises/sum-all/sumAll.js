@@ -1,21 +1,12 @@
 function sumAll(arr) {
-  let [min, max] = arr
+  let [num1, num2] = arr
   let sum = 0
+  const min = Math.min(num1, num2)
+  const max = Math.max(num1, num2)
 
-  if (min > max) {
-    // swap
-    sum = max
-    max = min
-    min = sum
-  }
-
-  sum = 0
-
-  for (let i = min; i <= max; i++) {
-    sum += i
-  }
-
-  return sum;
+  sum = (max - min + 1) * (max + min) / 2
+  
+  return sum
 }
 
 export {
