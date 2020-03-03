@@ -1,5 +1,7 @@
 const isPrime = (num) => {
-  for (let j = 2; j <= Math.floor(num / 2); j++) {
+  if (num === 1) return false
+  if (num === 2) return true
+  for (let j = 2; j <= Math.sqrt(num); j++) {
     if (num % j === 0) {
       return false
     }
