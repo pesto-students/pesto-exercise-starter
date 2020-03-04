@@ -1,9 +1,9 @@
 const cacheFunction = (inputFunction) => {
   let cacheMap = {};
   return function(...args) {
-    let argumentsKey = [...args];
+    const argumentsKey = [...args].toString();
     if (argumentsKey in cacheMap) return cacheMap[argumentsKey]
-    let result = inputFunction(...args);
+    const result = inputFunction(...args);
     cacheMap[argumentsKey] = result;
     return result;
   }
