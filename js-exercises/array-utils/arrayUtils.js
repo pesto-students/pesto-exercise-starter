@@ -1,10 +1,17 @@
 function forEach(array, callBack) {
+  if (typeof callBack !== "function") {
+    return;
+  }
+
   for (let i = 0; i < array.length; i++) {
     callBack(array[i], i, array);
   }
 }
 
 function map(array, callBack) {
+  if (typeof callBack !== "function") {
+    return;
+  }
   const mappedArray = [];
   for (let i = 0; i < array.length; i++) {
     mappedArray.push(callBack(array[i], i, array));
@@ -13,6 +20,9 @@ function map(array, callBack) {
 }
 
 function filter(array, callBack) {
+  if (typeof callBack !== "function") {
+    return;
+  }
   const filteredArray = [];
   for (let i = 0; i < array.length; i++) {
     if (callBack(array[i], i, array)) {
@@ -23,6 +33,9 @@ function filter(array, callBack) {
 }
 
 function reduce(array, callBack, initialValue) {
+  if (typeof callBack !== "function") {
+    return;
+  }
   let tempAccumulator = initialValue ? initialValue : array[0];
   for (let i = 0; i < array.length; i++) {
     tempAccumulator = callBack(tempAccumulator, array[i], i, array);
