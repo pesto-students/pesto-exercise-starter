@@ -22,8 +22,8 @@ function filter(array, callBack) {
   return filteredArray;
 }
 
-function reduce(array, callBack, typeOfAccumulator = 0) {
-  let tempAccumulator = typeOfAccumulator;
+function reduce(array, callBack, initialValue) {
+  let tempAccumulator = initialValue ? initialValue : array[0];
   for (let i = 0; i < array.length; i++) {
     tempAccumulator = callBack(tempAccumulator, array[i], i, array);
     console.log("hi, ", tempAccumulator);
