@@ -3,18 +3,18 @@ function sumPrimes(num) {
 	var result = 0;
 	while (curr <= num) {
 	if (isPrime(curr)) {
-	  result += curr;
+		result += curr;
 	}
-  curr += 1
+		curr += 1
 	}
 	return result;
 }
 
 function isPrime(num){
-  for(let i=2;i<num;i++){
-    if(num%i === 0) return false;
-  }
-  return true;
+	for(let i=2;i<num;i++){
+		if(num%i === 0) return false;
+	}
+	return true;
 }
 
 export {
