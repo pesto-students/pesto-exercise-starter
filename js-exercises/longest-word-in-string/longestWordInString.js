@@ -9,5 +9,4 @@ function longestWordInString(string) {
   return longestWordSize;
 }
 var a = longestWordInString('May the force be with you');
-console.log(a);
 export default { longestWordInString };
