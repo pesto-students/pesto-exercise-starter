@@ -1,0 +1,3 @@
+const argsString = () => {};
+
+export { argsString };
