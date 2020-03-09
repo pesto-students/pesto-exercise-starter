@@ -1,8 +1,5 @@
-
-function removeFalsyValues(array) {
-
+function removeFalsyValues(inputArr = []) {
+  return inputArr.filter(val => val);
 }
 
-export {
-  removeFalsyValues,
-};
+export { removeFalsyValues };

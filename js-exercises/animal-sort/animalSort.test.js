@@ -1,4 +1,4 @@
-import { animalSort } from './animalSort';
+import animalSort from './animalSort';
 
 describe('animalSort', () => {
   it('should return empty array if empty array is passed in', () => {
@@ -9,12 +9,12 @@ describe('animalSort', () => {
     const arr = [
       { name: 'Dog', numberOfLegs: 4 },
       { name: 'Bird', numberOfLegs: 2 },
-      { name: 'Snake', numberOfLegs: 0 },
+      { name: 'Snake', numberOfLegs: 0 }
     ];
     const result = [
       { name: 'Snake', numberOfLegs: 0 },
       { name: 'Bird', numberOfLegs: 2 },
-      { name: 'Dog', numberOfLegs: 4 },
+      { name: 'Dog', numberOfLegs: 4 }
     ];
     expect(animalSort(arr)).toEqual(result);
   });
@@ -26,7 +26,7 @@ describe('animalSort', () => {
       { name: 'Dog', numberOfLegs: 4 },
       { name: 'Pig', numberOfLegs: 4 },
       { name: 'Human', numberOfLegs: 2 },
-      { name: 'Bird', numberOfLegs: 2 },
+      { name: 'Bird', numberOfLegs: 2 }
     ];
     const result = [
       { name: 'Snake', numberOfLegs: 0 },
@@ -34,7 +34,7 @@ describe('animalSort', () => {
       { name: 'Human', numberOfLegs: 2 },
       { name: 'Cat', numberOfLegs: 4 },
       { name: 'Dog', numberOfLegs: 4 },
-      { name: 'Pig', numberOfLegs: 4 },
+      { name: 'Pig', numberOfLegs: 4 }
     ];
     expect(animalSort(arr)).toEqual(result);
   });
