@@ -1,31 +1,36 @@
-function sumFibs(num) {
-  function fabonacci(n) {
-    // if (n === 1) return 1;
-    // if (n === 2) return 1;
-    let a = 0;
-    let b = 1;
-    let c;
+  function generateFabonacci(number) {
+    let previous = 0;
+    let current = 1;
+    let next;
     let i = 1;
-    while (i <= n) {
-      c = a + b;
-      a = b;
-      b = c;
+    while (i <= number) {
+      next = previous + current;
+      previous = current;
+      current = next;
       i++;
     }
-    return c;
+    return next;
   }
-  let sum = 1;
-  for (let i = 1; i <= num; i++) {
-    if (fabonacci(i) > num) return sum;
-    if (fabonacci(i) <= num) {
-      if (!Number.isInteger(fabonacci(i) / 2)) {
-        sum = sum + fabonacci(i)
+
+  function isSum(number) {
+    return number % 2 === 0
+  }
+
+  function sumFibs(number) {
+    let sum = 1;
+    for (let i = 1; i <= number; i++) {
+      const fabonacciNumber = generateFabonacci(i);
+      if (fabonacciNumber > number) return sum;
+      if (fabonacciNumber <= number) {
+        if (!isSum(fabonacciNumber)) {
+          sum = sum + fabonacciNumber
+        }
       }
     }
-  }
-  return sum;
-}
 
-export {
-  sumFibs,
-};
+    return sum;
+  }
+
+  export {
+    sumFibs,
+  };
