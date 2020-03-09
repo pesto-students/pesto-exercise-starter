@@ -15,7 +15,7 @@ function duplicateLetters(str) {
     }
   }
   if (max == 1) {
-    return "False";
+    return false;
   }
   return max;
 }
