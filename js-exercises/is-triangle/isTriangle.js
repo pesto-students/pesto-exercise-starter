@@ -1,5 +1,5 @@
-function isTriangle(a, b, c) {
-  if (a + b <= c || a + c <= b || b + c <= a)
+function isTriangle(sideA, sideB, sideC) {
+  if (sideA + sideB <= sideC || sideA + sideC <= sideB || sideB + sideC <= sideA)
     return false;
   else
     return true;
