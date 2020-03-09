@@ -1,23 +1,28 @@
-function duplicateLetters(...args) {
-  let lettersCount = {};
-  for (let letter of args[0]) {
-    if (letter in lettersCount) {
-      lettersCount[letter]++;
+function buildFrequencyMapOf(str) {
+  const frequencyOfLetters = new Map();
+  for (const letter of str) {
+    const letterCount = frequencyOfLetters.get(letter);
+    if (letterCount !== undefined) {
+      frequencyOfLetters.set(letter, letterCount + 1);
     } else {
-      lettersCount[letter] = 1;
+      frequencyOfLetters.set(letter, 1);
     }
   }
-  let max = 1;
-  for (let val in lettersCount) {
-    if (lettersCount[val] > max) {
-      max = lettersCount[val];
-    }
-  }
-  if (max === 1) {
+  return frequencyOfLetters;
+}
+
+function maxOf(array) {
+  return Math.max(...array);
+}
+
+function duplicateLetters(string) {
+  const frequencyOfLetters = buildFrequencyMapOf(string)
+  const justFrequencies = Array.from(frequencyOfLetters.values());
+  const maximumFrequency = maxOf(justFrequencies);
+  if (maximumFrequency === 1) {
     return false;
-  } else {
-    return max;
   }
+  return maximumFrequency;
 }
 
 export {
