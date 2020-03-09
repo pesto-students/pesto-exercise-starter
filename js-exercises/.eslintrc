@@ -10,6 +10,7 @@
     "comma-dangle": 0,
     "no-plusplus": 0,
     "one-var-declaration-per-line": 0,
+    "implicit-arrow-linebreak": 0,
     "one-var": 0
   }
 }

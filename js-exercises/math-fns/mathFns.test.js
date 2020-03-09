@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/named
 import { sqrt, power, round } from './mathFns';
 
 describe('Use Math functions', () => {

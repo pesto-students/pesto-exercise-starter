@@ -1,8 +1,4 @@
+const lastIndexOf = (itemToFind, arrToFind) =>
+  arrToFind.lastIndexOf(itemToFind);
 
-function lastIndexOf(...args) {
-  return args;
-}
-
-export {
-  lastIndexOf,
-};
+export { lastIndexOf };

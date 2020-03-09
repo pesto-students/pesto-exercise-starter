@@ -1,6 +1,6 @@
 import { addBigIntegers } from './addBigIntegers';
 
-describe.skip('addBigIntegers', () => {
+describe('addBigIntegers', () => {
   it('Adds a series of large integers', () => {
     expect(
       addBigIntegers(`539
