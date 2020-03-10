@@ -12,17 +12,17 @@
     return next;
   }
 
-  function isSum(number) {
-    return number % 2 === 0
+  function isOdd(number) {
+    return !(number % 2 === 0)
   }
-
+  //try to do it in single loop.
   function sumFibs(number) {
     let sum = 1;
     for (let i = 1; i <= number; i++) {
       const fabonacciNumber = generateFabonacci(i);
       if (fabonacciNumber > number) return sum;
       if (fabonacciNumber <= number) {
-        if (!isSum(fabonacciNumber)) {
+        if (isOdd(fabonacciNumber)) {
           sum = sum + fabonacciNumber
         }
       }
