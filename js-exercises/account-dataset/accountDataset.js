@@ -8,9 +8,14 @@ const fileContent = fs.readFileSync(
 );
 
 const { bankBalances } = JSON.parse(fileContent);
+const MINIMUM_BALANCE_REQUIRED = 100000;
+
+const sumFunction = (a, b) => a + b;
 
 function hundredThousandairs() {
-  return bankBalances.filter(balance => Number(balance.amount) > 100000);
+  return bankBalances.filter(
+    balance => Number(balance.amount) > MINIMUM_BALANCE_REQUIRED
+  );
 }
 
 function datasetWithRoundedDollar() {
@@ -23,33 +28,36 @@ function datasetWithRoundedDollar() {
 function sumOfBankBalances() {
   const result = bankBalances
     .map(balance => Number(balance.amount))
-    .reduce((a, b) => a + b, 0);
+    .reduce(sumFunction, 0);
   return Number(result.toFixed(2));
 }
 
 function sumOfInterests() {
-  const filteredBankBalances = bankBalances.filter(
-    balance =>
-      balance.state === 'WI' ||
-      balance.state === 'IL' ||
-      balance.state === 'WY' ||
-      balance.state === 'OH' ||
-      balance.state === 'GA' ||
-      balance.state === 'DE'
-  );
-  const result = filteredBankBalances
-    .map(balance => 0.18 * balance.amount)
-    .reduce((a, b) => a + b, 0);
-  return result.toFixed(2);
+  const sumOfInterest = bankBalances
+    .filter(
+      account =>
+        account.state === 'WI' ||
+        account.state === 'IL' ||
+        account.state === 'WY' ||
+        account.state === 'OH' ||
+        account.state === 'GA' ||
+        account.state === 'DE'
+    )
+    .map(({ amount }) => Math.round(Number(amount) * 18.9) / 100)
+    .reduce(sumFunction, 0);
+  return +sumOfInterest.toFixed(2);
 }
 
 function higherStateSums() {
-  const filteredArray = bankBalances.filter(
-    balance => Number(balance.amount) > 1000000
-  );
-  return filteredArray
-    .map(balance => balance.amount)
-    .reduce((a, b) => a + b, 0);
+  const stateAmountObj = {};
+  bankBalances.forEach(account => {
+    stateAmountObj[account.state] = stateAmountObj[account.state]
+      ? stateAmountObj[account.state] + Number(account.amount)
+      : +account.amount;
+  });
+  return Object.values(stateAmountObj)
+    .filter(amount => amount >= 1000000)
+    .reduce(sumFunction, 0);
 }
 
 export {

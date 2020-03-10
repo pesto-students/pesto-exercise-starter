@@ -20,8 +20,9 @@ describe('accountDataset', () => {
     it('should return an array of accounts with an added key `rounded`', () => {
       expect(datasetWithRoundedDollar().length).toBe(100);
       expect(
-        datasetWithRoundedDollar().every(account =>
-          Object.hasOwnProperty.call(account, 'rounded')
+        datasetWithRoundedDollar().every(
+          account => Object.hasOwnProperty.call(account, 'rounded')
+          // eslint-disable-next-line function-paren-newline
         )
       ).toBe(true);
     });
@@ -41,15 +42,13 @@ describe('accountDataset', () => {
     });
   });
 
-  // describe('sumOfInterests', () => {
-  //   it('should return the sum the 18.9% interest for all amounts in bankBalances, in the selected states, rounded to the nearest cent', () => {
-  //     expect(sumOfInterests())
-  //       .toBe(2504611.23);
-  //   });
-  // });
+  describe('sumOfInterests', () => {
+    it('should return the sum the 18.9% interest for all amounts in bankBalances, in the selected states, rounded to the nearest cent', () => {
+      expect(sumOfInterests()).toBe(2504611.23);
+    });
+  });
 
-  // it('should return the sum of all amounts of every state, where the sum of amounts in the state is greater than 1,000,000', () => {
-  //   expect(higherStateSums())
-  //     .toBe(48629878.25);
-  // });
+  it('should return the sum of all amounts of every state, where the sum of amounts in the state is greater than 1,000,000', () => {
+    expect(higherStateSums()).toBe(48629878.25);
+  });
 });
