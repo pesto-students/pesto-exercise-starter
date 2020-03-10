@@ -1,7 +1,7 @@
 
 function duplicateLetters(input) {
   const letters = {};
-  let maxFreq = 0;
+  let maxFreqOfLetter = 0;
   for (const l of input) {
     if (l in letters) {
       letters[l] += 1;
@@ -9,16 +9,16 @@ function duplicateLetters(input) {
       letters[l] = 1;
     }
 
-    if (maxFreq < letters[l]) {
-      maxFreq = letters[l];
+    if (maxFreqOfLetter < letters[l]) {
+      maxFreqOfLetter = letters[l];
     }
   }
 
-  if (maxFreq === 1) {
+  if (maxFreqOfLetter === 1) {
     return false;
   }
 
-  return maxFreq;
+  return maxFreqOfLetter;
 }
 
 export {
