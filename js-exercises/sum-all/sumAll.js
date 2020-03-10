@@ -1,41 +1,18 @@
-
-
-function sumAll(brr) {
-  let arr = [];
-  let inc = 0;
-  let incSec = 0;
-  let x = 0;
-
-  if(brr[0]>brr[1]){
-
-    for(let i=brr[0];i<=brr;i++){
-      arr[inc]= i;
-      inc = inc +1;
-    }
-    while(incSec <arr.length )
-    {
-    	x =  arr[incSec]+x;
-      incSec = incSec +1
-    }
-
-    return x ;
-
-
-  }else{
-
-    for(let i=brr[1];i<=brr[0];i++){
-      arr[inc]= i;
-      inc = inc +1;
-    }
-    while(incSec <arr.length )
-    {
-    	x =  arr[incSec]+x;
-      incSec = incSec +1
-    }
-
-    return x ;
+function sumAll(arr) {
+  let firstElement = arr[0] ;
+  let lastElement= arr[1] ;
+  let result = [];
+  result[0] = 0;
+  if(arr[0]>arr[1]){
+     firstElement = arr[1] ;
+     lastElement= arr[0] ;
   }
-
+  console.log(firstElement);
+  console.log(lastElement);
+  for(let i= firstElement;i<=lastElement;i++){
+  	result[0] = result[0]  + i;
+  }
+  return result[0];
 }
 
 export {

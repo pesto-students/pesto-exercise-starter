@@ -18,8 +18,8 @@ function hundredThousandairs() {
 }
 
 function datasetWithRoundedDollar() {
-  bankBalances.forEach(function (element) {
-    element.rounded = Math.round(element.rounded);
+   bankBalances.forEach(function (element) {
+    element.rounded = Math.round(element.amount);
   });
   return bankBalances;
 }
@@ -28,9 +28,9 @@ function sumOfBankBalances() {
   let store = [];
   store[0] = 0;
   bankBalances.forEach(function (element) {
-    store[0] = element.amount + store[0] ;
+    store[0] = parseFloat(element.amount) + store[0];
   });
-  return store[0];
+  return parseFloat(store[0].toFixed(2));
 }
 
 function sumOfInterests() {
@@ -38,17 +38,18 @@ function sumOfInterests() {
   store[0] = 0;
   let useStates = ['WI','WY','IL','OH','GA','DE'];
   let  calculateInterest = function(arg1){
-    let totalAmount = arg1 +Math.round(arg1*18.9/100);
+    let totalAmount =  arg1*18.9/100;
     return totalAmount;
   }
   bankBalances.forEach(function (element) {
     if(useStates.indexOf(element.state) !== -1){
-      let interest =  calculateInterest(element.amount);
+      let interest =  calculateInterest(parseFloat(element.amount));
       store[0] = store[0] + interest ;
     }
-    return store[0] ;
+
   });
 
+	return parseFloat(store[0].toFixed(2));
 }
 
 function higherStateSums() {
@@ -58,14 +59,15 @@ function higherStateSums() {
       let totalAmount = [];
       totalAmount[0] = 0;
       store[0] = 0;
-      let storeStates = function(arg1){
-        if(states.indexOf(arg1)!= -1){
-          states.push(arg1);
-        }
-      }
+
 
       bankBalances.forEach(function (element) {
-        storeStates(element.state);
+        if(states.length === 0){
+        states.push(element.state);
+          }else{
+        if(states.indexOf(element.state) === -1){
+         states.push(element.state);
+       }}
       });
 
       for(let i=0;i< states.length;i++){
@@ -75,7 +77,7 @@ function higherStateSums() {
         });
 
         statesData.forEach(function (element) {
-            store[0] = element.amount + store[0] ;
+            store[0] = parseFloat(element.amount) + store[0] ;
         });
 
         if(store[0] >1000000){
