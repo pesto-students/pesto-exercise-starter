@@ -8,15 +8,11 @@ function sqrt(num){
 
 
 function power(num,pow){
-let result=1
- for(var i=1;i<=pow;i++){
-   result=result*num
- }
- return result;
+  return Math.pow(num,pow)
 }
 
 function round(num){
-  return Math.floor(num)
+  return Math.round(num)
 }
 
 export {

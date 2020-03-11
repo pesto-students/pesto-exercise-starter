@@ -1,7 +1,7 @@
 
-function duplicateLetters(...args) {
+function duplicateLetters(param) {
   let arr=[]
-  let string = args[0].split("")
+  let string = param.split("")
   for(var j=0;j<string.length;j++){
     let count=1
     for(var k=j+1;k<string.length;k++){
@@ -20,7 +20,6 @@ function duplicateLetters(...args) {
   return arr[arr.length-1] ;
   }
 }
-
 export {
   duplicateLetters,
 };
