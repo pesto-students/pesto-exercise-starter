@@ -1,7 +1,0 @@
-function sumPrimes() {
-
-}
-
-export {
-  sumPrimes,
-};

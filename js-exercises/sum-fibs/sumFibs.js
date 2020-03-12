@@ -1,7 +1,0 @@
-function sumFibs() {
-
-}
-
-export {
-  sumFibs,
-};
