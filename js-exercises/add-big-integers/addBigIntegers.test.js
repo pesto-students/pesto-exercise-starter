@@ -8,6 +8,12 @@ describe("addBigIntegers", () => {
 201`)
     ).toEqual("748");
     expect(
+      addBigIntegers(`123
+      345
+      9
+      2`)
+    ).toEqual("479");
+    expect(
       addBigIntegers(`8284089949645109317773
 5840714128396983596239
 12946447842028638908267
