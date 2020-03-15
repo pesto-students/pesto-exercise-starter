@@ -89,7 +89,7 @@ please keep in mind thet these are my settings these can be ignored
   // Controls the width of the cursor when `editor.cursorStyle` is set to `line`.
   "editor.cursorWidth": 0,
   // Defines a default formatter which takes precedence over all other formatter settings. Must be the identifier of an extension contributing a formatter.
-  "editor.defaultFormatter": null,
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
   // Controls whether the definition link opens element in the peek widget.
   "editor.definitionLinkOpensInPeek": false,
   // Controls whether `editor.tabSize#` and `#editor.insertSpaces` will be automatically detected when a file is opened based on the file contents.
@@ -128,9 +128,9 @@ please keep in mind thet these are my settings these can be ignored
   // Controls the font weight.
   "editor.fontWeight": "normal",
   // Controls whether the editor should automatically format the pasted content. A formatter must be available and the formatter should be able to format a range in a document.
-  "editor.formatOnPaste": true,
+  "editor.formatOnPaste": false,
   // Format a file on save. A formatter must be available, the file must not be saved after delay, and the editor must not be shutting down.
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   // Controls whether the editor should automatically format the line after typing.
   "editor.formatOnType": true,
   // Controls whether the editor should render the vertical glyph margin. Glyph margin is mostly used for debugging.
