@@ -47,9 +47,6 @@ function longestWordInString(inputString) {
   console.log(longestWord);
   return longestWord;
 }
-longestWordInString(
-  'What if we try a super-long word such as otorhinolaryngology'
-);
 export { longestWordInString };
 /**
  * regards Bhargav Mantha-Awaiting Response
