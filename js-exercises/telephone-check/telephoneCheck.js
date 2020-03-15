@@ -9,6 +9,12 @@
  * 2. If the phone number is iun the US phone number format return true else false
  * @param {String} (Phonenumber)
  */
+
+/**
+ * this function is responsable for checking if the phone number is valied or not
+ * i have used a regex to perform the same please let me know ur openion
+ * @param {String} inputPhoneNumber
+ */
 const regExMatcher = inputPhoneNumber => {
   const regex = /^(1\s)?\(?\d{3}(\))?(-|\s)?\d{3}(-|\s)?\d{4}$/;
   const pattern = new RegExp(regex);
