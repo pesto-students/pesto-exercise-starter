@@ -137,7 +137,7 @@ const bigIntegerSumCalculator = positionTrackerJSON => {
     sumArray.push(`${sum}`);
   }
   sumArray = sumArray.reverse().join('');
-
+  console.log(sumArray);
   return sumArray;
 };
 /**
@@ -146,17 +146,31 @@ const bigIntegerSumCalculator = positionTrackerJSON => {
  */
 function addBigIntegers(intString) {
   let bigNumbersArray = splitStringBasedOnNewLine(intString);
-
+  bigNumbersArray = bigNumbersArray.map(element => element.trim());
+  /* console.log(bigNumbersArray); */
   const largestLength = getLargestLengthInArray(bigNumbersArray);
   bigNumbersArray = recursive0Adder(bigNumbersArray, largestLength);
-
+  /* console.log(bigNumbersArray); */
   const bigNumbersJSON = bigNumberJSONGenerator(bigNumbersArray);
   const positionTrackerJSON = positionTrackerJsonGenerator(
     bigNumbersJSON,
     largestLength
   );
+  // console.log(positionTrackerJSON);
   const sumOfBigintegers = bigIntegerSumCalculator(positionTrackerJSON);
-  return sumOfBigintegers;
+  /* console.log(sumOfBigintegers); */
 }
-
+/* addBigIntegers(`8756499060735809031881837100717640
+70934460872207922801951375249700
+8977770975897338226131985886684681
+91454061215320969515432196409002
+651196844487299640943680194655725
+6961749288159882186283784162262
+9036094416288347680296039655938060
+939687434873009984637644098803640
+79366258890858900774075693801787
+14118147069715140307096132393279
+934555969025599810767196778088364
+7551918592800103991210533406382642`);
+ */
 export { addBigIntegers };
