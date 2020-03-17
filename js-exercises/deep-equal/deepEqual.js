@@ -6,14 +6,15 @@ function deepEqual(...args) {
 	if (!matchDescriptors) {
 		return objectCompare(obj1, obj2);
 	} else {
+		return deepCompare(obj1, obj2);
 	}
-
-	return true;
 }
 
 function objectCompare(obj1, obj2) {
+	if (Object.keys(obj1).length !== Object.keys(obj2).length) return false;
+
 	for (let item in obj1) {
-		if (!obj2[item] || obj1[item] !== obj2[item]) return false;
+		if (obj1[item] !== obj2[item]) return false;
 	}
 	return true;
 }
@@ -26,18 +27,14 @@ function deepCompare(obj1, obj2) {
 	for (let item in obj1) {
 		const item1 = obj1[item];
 		const item2 = obj2[item];
-
 		if (!item in obj2 || Object.keys(obj1).length !== Object.keys(obj2).length) {
-			//if key/s is absent
 			return false;
 		} else if (typeof item1 !== 'object' && typeof item2 !== 'object') {
-			//if values are primitive
 			if (!primitiveCompare(item1, item2)) return false;
 		} else if (typeof item1 === 'object' && typeof item2 === 'object') {
-			//same keys, both objects. check recursively
 			deepCompare(item1, item2);
-			const descriptors1 = Object.getOwnPropertyDescriptors(obj1, item);
-			const descriptors2 = Object.getOwnPropertyDescriptors(obj2, item);
+			const descriptors1 = Object.getOwnPropertyDescriptor(obj1, item);
+			const descriptors2 = Object.getOwnPropertyDescriptor(obj2, item);
 			if (!objectCompare(descriptors1, descriptors2)) return false;
 		} else if (typeof item1 !== typeof item2) {
 			return false;
