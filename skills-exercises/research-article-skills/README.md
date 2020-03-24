@@ -4,7 +4,7 @@
 
 ### Put the URL of the article below
 
-### URL: https://medium.com/@varora1406/tdd-learn-from-experience-of-microsoft-and-ibm-122453460dc2
+### URL: https://medium.com/@varora1406/tdd-learn-from-experience-of-microsoft-and-ibm-122453460dc2 && https://dev.to/vaibhav_arora__/tdd-learn-from-experience-of-microsoft-and-ibm-25o6
 
 _Example-_
 
