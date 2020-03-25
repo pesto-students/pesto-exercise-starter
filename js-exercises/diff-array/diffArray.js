@@ -1,7 +1,0 @@
-function diffArray() {
-  
-}
-
-export {
-  diffArray,
-};
