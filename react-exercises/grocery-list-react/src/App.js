@@ -6,10 +6,12 @@ function App() {
   const [inputBoxValue, setInputBoxValue] = React.useState('');
 
   const addGroceryItem = e => {
-    console.log(e);
     e.preventDefault();
     if (!inputBoxValue) return;
-    const newGroceryItems = [...groceryItems, { name: inputBoxValue }];
+    const newGroceryItems = [
+      ...groceryItems,
+      { name: inputBoxValue, clicked: 0, id: groceryItems.length }
+    ];
     setGroceryItems(newGroceryItems);
     setInputBoxValue('');
   };
@@ -22,7 +24,7 @@ function App() {
           value={inputBoxValue}
           onChange={e => setInputBoxValue(e.target.value)}
         ></input>
-        <button type="submit">Submit</button>
+        <button type="submit">Add</button>
       </form>
       <GroceryList items={groceryItems}></GroceryList>
     </div>
