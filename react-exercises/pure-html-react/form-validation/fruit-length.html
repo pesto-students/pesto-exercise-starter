@@ -1,0 +1,26 @@
+<!-- Exercise:
+Fruit-length. -->
+
+<!DOCTYPE html>
+<html>
+  <body>
+    <form>
+      Would you prefer a banana or a cherry? 
+      <input 
+      	type="text" 
+      	name="fruitName" 
+      	pattern=".{6,}" 
+      	oninvalid="this.setCustomValidity(`Please lengthen this text to 6 characters or more (you are currently using ${this.value.length} character).`)" 
+      	onchange="
+      		try
+      		{
+      			setCustomValidity('')
+      		}
+      		catch(e){
+      			
+      		}"
+      	required />
+      <input type="submit" />
+    </form>
+  </body>
+</html>
