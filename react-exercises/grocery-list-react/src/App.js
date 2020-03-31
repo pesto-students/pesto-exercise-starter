@@ -1,4 +1,5 @@
 import React from 'react';
+import GroceryList from './components/GroceryList';
 
 function App() {
   const [groceryItems, setGroceryItems] = React.useState([]);
@@ -23,9 +24,7 @@ function App() {
         ></input>
         <button type="submit">Submit</button>
       </form>
-      {groceryItems.map(groceryItem => (
-        <p>{groceryItem.name}</p>
-      ))}
+      <GroceryList items={groceryItems}></GroceryList>
     </div>
   );
 }
