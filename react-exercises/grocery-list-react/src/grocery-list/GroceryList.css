@@ -1,0 +1,38 @@
+.Main-Container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 15% 0 15%;
+}
+
+.Grocery-List {
+  display: flex;
+  justify-content: space-between;
+}
+.List {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+.Grocery-Input {
+  height: 40px;
+  width: 50%;
+  border-radius: 5px;
+  border: 1px solid black;
+  outline: none;
+  font-size: 24px;
+}
+
+.Grocery-Btn {
+  background-color: #E8505B;
+  color: #fff;
+  font-size: 15px;
+  width: 200px;
+  height: 40px;
+  border-radius: 5px;
+  outline: none;
+}
+.Disable-Btn {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

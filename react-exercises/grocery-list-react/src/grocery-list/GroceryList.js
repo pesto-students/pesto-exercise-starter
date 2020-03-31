@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./GroceryList.css";
 import GroceryListItem from "../grocery-list-item/GroceryListItem";
 
 class GroceryList extends Component {
@@ -38,8 +39,14 @@ class GroceryList extends Component {
       newlist.push(newItem);
     }
 
+    this.setState({ list: newlist, newGrocery: "" });
+  };
+
+  updateQuantity = (index, quantity) => {
+    const groceryItemID = index;
+    const newlist = [...this.state.list];
+    newlist[groceryItemID].quantity += quantity;
     this.setState({ list: newlist });
-    this.state.newGrocery = "";
   };
 
   clearAll = () => {
@@ -47,16 +54,56 @@ class GroceryList extends Component {
   };
 
   render() {
+    let header;
+    if (this.state.list.length > 0) {
+      header = (
+        <li className="List">
+          <h3>Name</h3>
+          <h3>Quantity</h3>
+        </li>
+      );
+    }
     return (
       <React.Fragment>
-        <input value={this.state.newGrocery} onChange={this.updateNewGrocery} />
-        <button onClick={this.addNewGrocery}>Add Grocery</button>
-        <button onClick={this.clearAll}>Clear All</button>
-        <ul>
-          {this.state.list.map(item => (
-            <GroceryListItem item={item} key={item.id} />
-          ))}
-        </ul>
+        <div className="Main-Container">
+          <div>
+            <h1>Grocery List</h1>
+          </div>
+          <div className="Grocery-List">
+            <input
+              className="Grocery-Input"
+              value={this.state.newGrocery}
+              onChange={this.updateNewGrocery}
+            />
+            <button
+              className={`${
+                !this.state.newGrocery ? "Disable-Btn" : ""
+              } Grocery-Btn`}
+              onClick={this.addNewGrocery}
+              disabled={!this.state.newGrocery}
+            >
+              Add Grocery
+            </button>
+            <button
+              className={`${
+                this.state.list.length === 0 ? "Disable-Btn" : ""
+              } Grocery-Btn`}
+              onClick={this.clearAll}
+            >
+              Clear All
+            </button>
+          </div>
+          <ul>
+            {header}
+            {this.state.list.map(item => (
+              <GroceryListItem
+                item={item}
+                key={item.id}
+                updateQuantity={this.updateQuantity}
+              />
+            ))}
+          </ul>
+        </div>
       </React.Fragment>
     );
   }

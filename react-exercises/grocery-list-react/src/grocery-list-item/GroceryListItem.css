@@ -1,6 +1,15 @@
 .List {
   list-style: none;
   display: flex;
-  justify-content: space-around;
-  align-content: stretch;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+.Grocery-Name {
+  width: 70%;
+}
+.Quantity-Negative {
+  padding-right: 10px;
+}
+.Quantity-Positive {
+  padding-left: 10px;
 }
