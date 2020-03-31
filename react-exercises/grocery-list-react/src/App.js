@@ -5,22 +5,35 @@ function App() {
   const [groceryItems, setGroceryItems] = React.useState([]);
   const [inputBoxValue, setInputBoxValue] = React.useState('');
 
+  const groceryItemExists = newGroceryItem => {
+    return groceryItems.findIndex(groceryItem => groceryItem.name === newGroceryItem) > -1;
+  };
+
   const addGroceryItem = e => {
     e.preventDefault();
     if (!inputBoxValue) return;
-    const newGroceryItems = [
-      ...groceryItems,
-      { name: inputBoxValue, clicked: 0, id: groceryItems.length }
-    ];
+    const newGroceryItem = inputBoxValue;
+    let newGroceryItems = [];
+    if (groceryItemExists(inputBoxValue)) {
+      const duplicateGroceryItemIndex = groceryItems.findIndex(
+        groceryItem => groceryItem.name === newGroceryItem
+      );
+      newGroceryItems = [...groceryItems];
+      newGroceryItems[duplicateGroceryItemIndex].quantity += 1;
+    } else {
+      newGroceryItems = [
+        ...groceryItems,
+        { name: inputBoxValue, clicked: 0, id: groceryItems.length, quantity: 1 }
+      ];
+    }
     setGroceryItems(newGroceryItems);
     setInputBoxValue('');
   };
 
-  const handleGroceryItemClick = groceryItem => {
+  const handleGroceryItemClick = groceryItemId => {
     const newGroceryItems = [...groceryItems];
-    newGroceryItems[groceryItem.id].clicked += 1;
+    newGroceryItems[groceryItemId].clicked += 1;
     setGroceryItems(newGroceryItems);
-    console.log(groceryItems);
   };
 
   return (

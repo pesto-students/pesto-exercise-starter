@@ -8,8 +8,8 @@ const GroceryItem = ({ item, handleClick }) => {
     color: 'black'
   };
   return (
-    <p onClick={() => handleClick(item)} style={item.clicked > 0 ? redText : blackText}>
-      {item.name}
+    <p onClick={() => handleClick(item.id)} style={item.clicked > 0 ? redText : blackText}>
+      {item.name} <span>{item.quantity}</span>
     </p>
   );
 };
