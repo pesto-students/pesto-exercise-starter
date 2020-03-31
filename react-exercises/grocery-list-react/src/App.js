@@ -16,6 +16,13 @@ function App() {
     setInputBoxValue('');
   };
 
+  const handleGroceryItemClick = groceryItem => {
+    const newGroceryItems = [...groceryItems];
+    newGroceryItems[groceryItem.id].clicked += 1;
+    setGroceryItems(newGroceryItems);
+    console.log(groceryItems);
+  };
+
   return (
     <div className="App">
       <form onSubmit={addGroceryItem}>
@@ -26,7 +33,7 @@ function App() {
         ></input>
         <button type="submit">Add</button>
       </form>
-      <GroceryList items={groceryItems}></GroceryList>
+      <GroceryList items={groceryItems} handleClick={handleGroceryItemClick}></GroceryList>
     </div>
   );
 }
