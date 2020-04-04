@@ -1,9 +1,9 @@
 import React from "react";
-import Snake from "./snake";
+import SnakeGame from "./snake-game";
 import "./App.css";
 
 function App() {
-  return <Snake />;
+  return <SnakeGame />;
 }
 
 export default App;
