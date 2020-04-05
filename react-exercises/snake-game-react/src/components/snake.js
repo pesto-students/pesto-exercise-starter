@@ -1,4 +1,4 @@
-import { compareNumericArray } from "../utils/array-utils";
+import { isNumberArrayExactCopy } from "../utils/array-utils";
 
 function Snake(props) {
   const nunmberOfCubeInARow = props.nunmberOfCubeInARow;
@@ -25,7 +25,7 @@ function Snake(props) {
   }
 
   if (
-    !compareNumericArray(
+    !isNumberArrayExactCopy(
       props.snakeTailPosition.map((ele) => ele.point),
       SnakeTail.map((ele) => ele.point)
     )
