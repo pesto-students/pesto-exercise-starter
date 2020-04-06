@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./game-box.css";
 import Snake from "./snake";
 
@@ -12,6 +12,12 @@ function GameBox(props) {
     props.snakeTailPosition,
     props.setSnakeTailPosition,
   ];
+
+  const useStateRef = useRef(snakeTailPosition);
+  const _setSnakeTailPosition = (data) => {
+    useStateRef.current = data;
+    setSnakeTailPosition(data);
+  };
 
   const boxWidth = props.boxWidth;
   const boxHeight = props.boxHeight;
@@ -37,7 +43,7 @@ function GameBox(props) {
 
   Snake({
     snakeTailPosition,
-    setSnakeTailPosition,
+    _setSnakeTailPosition,
     nunmberOfCubeInARow,
     numberOfCubeInAColumn,
   });
@@ -46,7 +52,25 @@ function GameBox(props) {
     props.setIsRunning(false);
   }
 
-  moveSnake(snakeTailPosition, setSnakeTailPosition, nunmberOfCubeInARow);
+  useEffect(() => {
+    window.addEventListener("keydown", (event) => {
+      if (
+        event.code === "ArrowUp" ||
+        "ArrowDown" ||
+        "ArrowRight" ||
+        "ArrowLeft"
+      ) {
+        changeDirection(
+          useStateRef.current,
+          _setSnakeTailPosition,
+          nunmberOfCubeInARow,
+          event.code
+        );
+      }
+    });
+  });
+
+  moveSnake(snakeTailPosition, _setSnakeTailPosition, nunmberOfCubeInARow);
 
   for (let index = 1; index <= cubesCount; index++) {
     cubeHtmls.push(
@@ -70,22 +94,94 @@ function GameBox(props) {
   );
 }
 
+function changeDirection(
+  snakeTailPosition,
+  setSnakeTailPosition,
+  numberOfCubeInARow,
+  direction
+) {
+  const snakeTailClone = [...snakeTailPosition];
+  const forwardHeadOfSnake = snakeTailClone[snakeTailClone.length - 1];
+  if (direction && direction !== forwardHeadOfSnake.direction) {
+    if (
+      direction === "ArrowLeft" &&
+      forwardHeadOfSnake.direction !== "ArrowRight"
+    ) {
+      window.clearTimeout(interval);
+      if (forwardHeadOfSnake.direction === "ArrowDown") {
+        forwardHeadOfSnake.direction = "ArrowLeft";
+        forwardHeadOfSnake.point -= 1;
+      }
+      _moveSnake(
+        snakeTailPosition,
+        setSnakeTailPosition,
+        numberOfCubeInARow,
+        true
+      );
+    }
+  }
+}
+
 function moveSnake(
   snakeTailPosition,
   setSnakeTailPosition,
-  nunmberOfCubeInARow
+  numberOfCubeInARow
 ) {
   window.clearTimeout(interval);
   interval = setTimeout(() => {
-    const snakeTailClone = [...snakeTailPosition];
+    debugger;
+    _moveSnake(snakeTailPosition, setSnakeTailPosition, numberOfCubeInARow);
+  }, 3000);
+}
 
-    const tailHeadClone = { ...snakeTailClone[snakeTailClone.length - 1] };
-    tailHeadClone.point += nunmberOfCubeInARow;
-    snakeTailClone[snakeTailClone.length] = tailHeadClone;
+function _moveSnake(
+  snakeTailPosition,
+  setSnakeTailPosition,
+  numberOfCubeInARow,
+  ignoreHead
+) {
+  const snakeTailClone = [...snakeTailPosition];
+  const forwardHeadOfSnake = snakeTailClone[snakeTailClone.length - 1];
 
-    snakeTailClone.splice(snakeTailClone[0], 1);
-    setSnakeTailPosition(snakeTailClone);
-  }, 100);
+  if (!ignoreHead) {
+    if (forwardHeadOfSnake.direction === "ArrowDown") {
+      forwardHeadOfSnake.point += numberOfCubeInARow;
+    } else if (forwardHeadOfSnake.direction === "ArrowLeft") {
+      forwardHeadOfSnake.point -= 1;
+    }
+  }
+
+  for (let index = snakeTailClone.length - 2; index >= 0; index--) {
+    const element = snakeTailClone[index];
+    if (
+      snakeTailClone[index + 1].direction === snakeTailClone[index].direction
+    ) {
+      if (snakeTailClone[index].direction === "ArrowDown") {
+        element.point += numberOfCubeInARow;
+      } else if (snakeTailClone[index].direction === "ArrowLeft") {
+        element.point -= 1;
+      }
+    } else {
+      if (snakeTailClone[index + 1].direction === "ArrowLeft") {
+        if (
+          snakeTailClone[index + 1].point ===
+          snakeTailClone[index].point - 2
+        ) {
+          element.direction = "ArrowLeft";
+          element.point -= 1;
+        } else {
+          element.point += numberOfCubeInARow;
+        }
+      } else {
+        if (element.direction === "ArrowDown") {
+          element.point += numberOfCubeInARow;
+        } else if (element.direction === "ArrowLeft") {
+          element.point -= 1;
+        }
+      }
+    }
+  }
+  setSnakeTailPosition(snakeTailClone);
 }
 
 export { GameBox };

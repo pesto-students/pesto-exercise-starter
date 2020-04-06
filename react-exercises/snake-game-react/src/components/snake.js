@@ -14,13 +14,13 @@ function Snake(props) {
       if (SnakeTail.length === 0) {
         SnakeTail.push({
           point: startIngPoint,
-          direction: "D",
+          direction: "ArrowDown",
         });
       } else {
         const nextPoint = SnakeTail[index - 1].point + nunmberOfCubeInARow;
         SnakeTail.push({
           point: nextPoint,
-          direction: "D",
+          direction: "ArrowDown",
         });
       }
     }
@@ -31,7 +31,7 @@ function Snake(props) {
         SnakeTail.map((ele) => ele.point)
       )
     ) {
-      props.setSnakeTailPosition(SnakeTail);
+      props._setSnakeTailPosition(SnakeTail);
     }
   }
 }

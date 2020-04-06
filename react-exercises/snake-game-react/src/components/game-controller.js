@@ -14,7 +14,7 @@ function GameController(props) {
   const [snakeTailPosition, setSnakeTailPosition] = useState([
     {
       point: -1,
-      direction: "D",
+      direction: "ArrowDown",
     },
   ]);
 
