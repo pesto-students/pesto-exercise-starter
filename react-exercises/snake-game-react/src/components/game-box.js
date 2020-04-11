@@ -48,9 +48,14 @@ function GameBox(props) {
     numberOfCubeInAColumn,
   });
 
-  if (snakeTailPosition[snakeTailPosition.length - 1].point > cubesCount) {
+  if (
+    hasGameEnd(snakeTailPosition, nunmberOfCubeInARow, numberOfCubeInAColumn)
+  ) {
     props.setIsRunning(false);
   }
+
+  // if (snakeTailPosition[snakeTailPosition.length - 1].point > cubesCount) {
+  // }
 
   useEffect(() => {
     window.addEventListener("keydown", (event) => {
@@ -131,7 +136,95 @@ function moveSnake(
   interval = setTimeout(() => {
     debugger;
     _moveSnake(snakeTailPosition, setSnakeTailPosition, numberOfCubeInARow);
-  }, 3000);
+  }, 400);
+}
+
+function hasGameEnd(
+  snakeTailPosition,
+  nunmberOfCubeInARow,
+  numberOfCubeInAColumn
+) {
+  return (
+    hasSnakeHitItself(snakeTailPosition) ||
+    hasSnakeHitWall(
+      snakeTailPosition,
+      nunmberOfCubeInARow,
+      numberOfCubeInAColumn
+    )
+  );
+}
+
+function hasSnakeHitItself(snakeTailPosition) {
+  const snakePoints = [];
+
+  for (let [key, value] of Object.entries(snakeTailPosition)) {
+    snakePoints.push(value.point);
+  }
+
+  const duplicateValuesInSnakePoints =
+    snakePoints.length !== new Set([...snakePoints]).size;
+  return duplicateValuesInSnakePoints;
+}
+
+function hasSnakeHitWall(
+  snakeTailPosition,
+  numberOfCubeInARow,
+  numberOfCubeInAColumn
+) {
+  let result = false;
+
+  if (snakeTailPosition.length > 2) {
+    const headOfSnake = snakeTailPosition[snakeTailPosition.length - 1];
+    const secondHeadOfSnake = snakeTailPosition[snakeTailPosition.length - 2];
+
+    if (
+      headOfSnake.point > numberOfCubeInARow * numberOfCubeInAColumn ||
+      headOfSnake.point < 1
+    ) {
+      result = true;
+      return result;
+    }
+
+    // if (
+    //   secondHeadOfSnake.point % numberOfCubeInAColumn === 0 ||
+    //   secondHeadOfSnake.point % numberOfCubeInARow === 0
+    // ) {
+    //   if (
+    //     !(
+    //       headOfSnake.point ===
+    //         secondHeadOfSnake.point + numberOfCubeInAColumn ||
+    //       headOfSnake.point === secondHeadOfSnake.point + numberOfCubeInARow ||
+    //       headOfSnake.point ===
+    //         secondHeadOfSnake.point - numberOfCubeInAColumn ||
+    //       headOfSnake.point === secondHeadOfSnake.point - numberOfCubeInARow
+    //     )
+    //   ) {
+    //     result = true;
+    //   }
+    // }
+
+    // if (
+    //   headOfSnake.point > numberOfCubeInAColumn * numberOfCubeInARow ||
+    //   headOfSnake.point < numberOfCubeInAColumn * numberOfCubeInARow
+    // ) {
+    //   result = true;
+    // }
+
+    // if (headOfSnake.direction === secondHeadOfSnake.direction) {
+    //   if (
+    //     !(
+    //       headOfSnake.point === secondHeadOfSnake.point + 1 ||
+    //       headOfSnake.point === secondHeadOfSnake.point - 1 ||
+    //       headOfSnake.point === secondHeadOfSnake.point + numberOfCubeInARow ||
+    //       headOfSnake.point === secondHeadOfSnake.point - numberOfCubeInARow
+    //     )
+    //   ) {
+    //     result = true;
+    //   }
+    // }
+  }
+
+  return result;
 }
 
 function _moveSnake(

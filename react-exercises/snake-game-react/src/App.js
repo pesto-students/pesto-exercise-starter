@@ -1,9 +1,9 @@
 import React from "react";
-import SnakeGame from "./snake-game";
 import "./App.css";
+import { GameController2 } from "./components/game-controller-2";
 
 function App() {
-  return <SnakeGame />;
+  return <GameController2 />;
 }
 
 export default App;
