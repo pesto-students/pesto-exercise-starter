@@ -1,0 +1,21 @@
+.app {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dFlex {
+  display: flex;
+}
+
+.emptyBlock {
+  width: 35px;
+  height: 35px;
+  border: 1px solid gray;
+}
+
+.snakeBody {
+  background-color: greenyellow;
+  height: 100%;
+  width: 100%;
+}
