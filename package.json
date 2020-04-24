@@ -11,6 +11,8 @@
     "update-repo": "node .bin/updateRepo.js"
   },
   "dependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
     "@octokit/rest": "^17.0.0",
     "argparse": "^1.0.10",
     "chalk": "^3.0.0",
